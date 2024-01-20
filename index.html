@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassLaunch- Your Personal Password Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">PassLaunch</div>
+      <ul>
+       
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+     
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div id="head">
+      <h1>Password Manager</h1>
+    </div>
+      <p>
+        Prioritize the security of user data. Use strong encryption algorithms
+        to store and transmit passwords securely. Implement secure
+        authentication mechanisms, such as multi-factor authentication, to
+        enhance user account security.
+      </p>
+      <h2>Your Passwords <span id="alert">(Copied!)</span></h2>
+      <table>
+        <tr>
+          <th>Website</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Delete</th>
+        </tr>
+      </table>
+
+      <h2>Add a Password</h2>
+      <form action="/submit" method="post">
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website" required />
+        <br /><br />
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+        <br /><br />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <br />
+
+        <button class="btn" type="submit">Submit</button>
+      </form>
+    </div>
+    <button id="generatePasswordButton">Generate Password</button>
+    <p id="passwordDisplay">Generated Password here....</p>
+
+    <script src="script.js"></script>
+  </body>
+  <script>
+    function generateRandomPassword(length) {
+      const charset =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+      let password = "";
+
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+      }
+
+      return password;
+    }
+
+    document
+      .getElementById("generatePasswordButton")
+      .addEventListener("click", function () {
+        const newPassword = generateRandomPassword(12);
+        document.getElementById("passwordDisplay").textContent =
+          "Generated Password: " + newPassword;
+      });
+    document.execCommand("copy");
+  </script>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ nav {
+    background-color: rgb(71, 71, 71);
+    color: white;
+    padding: 12px 3px;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+}
+.logo{
+    margin: 0 23px;
+    font-weight: 800;
+    font-size: 25px;
+    cursor: pointer;
+}
+ul {
+    display: flex;
+    margin: 0 23px;
+    align-items: center;
+}
+
+ul > li {
+    list-style: none;
+    margin: 0 13px;
+    cursor: pointer;
+}
+
+ul > li:hover{
+    color: white;
+
+}
+a {
+    text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+   
+</style>
+<body>
+    <nav>
+        <div class="logo">PassLaunch</div>
+        <ul>
+          
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+       
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <h1>Contact</h1>
+      
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+    
+        <button type="button" onclick="submitForm()">Submit</button>
+      </form>
+</body>
+<script>
+    function submitForm() {
+      
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+     
+      const formData = {
+        name: name,
+        email: email,
+        message: message
+      };
+
+      localStorage.setItem('formData', JSON.stringify(formData));
+
+      alert('Form submitted and data saved to local storage!');
+    }
+  </script>
+</html>
